@@ -4,7 +4,16 @@
     alt="A picture of {{@rental.title}}"    
   />    
   <div class="details">
-
+ {{!-- 
+ 
+ Si no tuviésemos el index.js con lo del community (ya que le incluimos el attribute tendríamos que llamar a todos los rentals de manera que sería una cosa así por ejemplo: 
+ @rental.attributes.title
+ @rental.attributes.owner
+ . 
+ . 
+ . 
+ etcétera
+ ) --}}
     <h3>
       <LinkTo @route="rental" @model={{@rental}}>
         {{@rental.title}}
