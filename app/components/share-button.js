@@ -1,20 +1,19 @@
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 
-
-const TWEET_INTENT = 'https://twitter.com/intent/'; /** Tenemos un problema con esta URL ya que no nos despliega el <a> </a> con la API de twitter **/
+const TWEET_INTENT =
+  'https://twitter.com/intent/'; /** Tenemos un problema con esta URL ya que no nos despliega el <a> </a> esto es debido al stylesheet **/
 /* const TWEET_INTENT = 'https://twitter.com/'; */
 
 export default class ShareButtonComponent extends Component {
-    @service router;
-  get currentURL() {    
+  @service router;
+  get currentURL() {
     return new URL(this.router.currentURL, window.location.origin);
-    
   }
 
   get shareURL() {
     let url = new URL(TWEET_INTENT);
-    console.log("Obteniendo constante URL" + url)
+    console.log('Obteniendo constante URL' + url);
 
     url.searchParams.set('url', this.currentURL);
 
