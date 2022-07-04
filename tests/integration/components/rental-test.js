@@ -1,5 +1,6 @@
-import { module, test } from 'qunit';
+import { hooks, module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import Service from '@ember/service';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
@@ -15,8 +16,9 @@ module('Integration | Component | rental', function (hooks) {
           owner: 'Veruca Salt',
           city: 'San Francisco',
           location: {
-            lat: 37.7749,
-            lng: -122.4194,
+            "x": 3,
+            "y": 2,
+            "z": 4,
           },
           category: 'Estate',
           type: 'Standalone',
@@ -32,8 +34,9 @@ module('Integration | Component | rental', function (hooks) {
           owner: 'Mike Teavee',
           city: 'Seattle',
           location: {
-            lat: 47.6062,
-            lng: -122.3321,
+            "x": 4,
+            "y": 3,
+            "z": 5,
           },
           category: 'Condo',
           type: 'Community',
@@ -49,8 +52,9 @@ module('Integration | Component | rental', function (hooks) {
           owner: 'Violet Beauregarde',
           city: 'Portland',
           location: {
-            lat: 45.5175,
-            lng: -122.6801,
+            "x": 5,
+            "y": 4,
+            "z": 6,
           },
           category: 'Apartment',
           type: 'Community',
@@ -65,10 +69,12 @@ module('Integration | Component | rental', function (hooks) {
   });
 
 
-  test('it renders all given rental properties by default', async function (assert) {
+ 
+  test('Input test rentals let´s go!!!', async function (assert) {
     await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
+    
     assert.dom('.rentals input').exists();
 
     assert.dom('.rentals .results').exists();
@@ -86,8 +92,8 @@ module('Integration | Component | rental', function (hooks) {
       .dom('.rentals .results li:nth-of-type(3)')
       .containsText('Downtown Charm');
   });
-
-  test('it updates the results according to the search query', async function (assert) {
+ 
+  test('Actualiza la query con nuevos resultados', async function (assert) {
     await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
